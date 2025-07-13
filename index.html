@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EstudiaPlus - Portal de Estudio Grado 11</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        header h1 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        
+        section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        section h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .proyecto-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .proyecto-text {
+            flex: 2;
+        }
+        
+        .proyecto-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .proyecto-image {
+            flex: 1;
+        }
+        
+        .proyecto-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .materias-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .materia-card {
+            background: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .materia-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .materia-card i {
+            font-size: 2rem;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        
+        .materia-card h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .materia-card p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background: #007bff;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        .tech-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .tech {
+            text-align: center;
+        }
+        
+        .tech i {
+            font-size: 3rem;
+            color: #666;
+        }
+        
+        .tech p {
+            margin-top: 10px;
+            color: #666;
+        }
+        
+        .demo-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .step {
+            background: #e0ffff;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .step-number {
+            background: #007bff;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 10px;
+        }
+        
+        .step p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        .cta {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        footer a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        
+        /* Modales */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+        
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            border-radius: 8px;
+        }
+        
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Estilos específicos para el modal de temas */
+        #temaModal .modal-content {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        #temaModal ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        #temaModal ul li {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        #temaModal ul li:hover {
+            background-color: #f9f9f9;
+        }
+        
+        /* Estilos específicos para el modal de prueba */
+        #pruebaModal .modal-content {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        #pruebaModal .pregunta {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        #pruebaModal .opciones {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 10px;
+        }
+        
+        #pruebaModal .opciones li {
+            padding: 10px;
+            margin-bottom: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        #pruebaModal .opciones li:hover {
+            background-color: #f0f0f0;
+        }
+        
+        #pruebaModal .opciones li.correcta {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+        }
+        
+        #pruebaModal .opciones li.incorrecta {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+        }
+        
+        #resultadoPrueba {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e2e6ea;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        /* Estilos para pantallas más pequeñas */
+        @media (max-width: 768px) {
+            .proyecto-content {
+                flex-direction: column;
+            }
+            
+            .materias-grid,
+            .features-grid,
+            .demo-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .tech-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+   <header>
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="https://0201.nccdn.net/1_2/000/000/08b/9bc/escudo-icontec.png" alt="Logo Liceo Samario" style="height: 140px;">
+        <div style="flex: 1; text-align: center;">
+            <h1><i class="fas fa-graduation-cap"></i> EstudiaPlus</h1>
+            <p>Portal educativo para estudiantes de grado 11</p>
+            <a href="#proyecto" class="btn">Ver Proyecto</a>
+        </div>
+    </div>
+</header>
+    
+        <section id="proyecto">
+    <h2>Acerca del Proyecto</h2>
+    <div class="proyecto-content">
+        <div class="proyecto-text">
+            <p>EstudiaPlus es un portal educativo diseñado específicamente para estudiantes de grado 11. Este proyecto tiene como objetivo proporcionar recursos de estudio de alta calidad, organizados de manera intuitiva, para facilitar el aprendizaje y la preparación académica en diversas materias clave.</p>
+            <p>
+                Este portal fue desarrollado por un grupo de estudiantes del grado 11-4 de la especialidad de Técnica en Informática y Comunicaciones (TIC) de la I.E.D. Liceo Samario, como parte de un proyecto escolar. La iniciativa surgió de la necesidad de contar con una herramienta que centralizara el material de estudio y ofreciera una alternativa interactiva y dinámica a los métodos tradicionales.
+            </p>
+            <p>
+                El equipo de desarrollo se dedicó a seleccionar y organizar cuidadosamente el contenido teórico, así como a buscar y enlazar videos educativos relevantes y a diseñar pruebas interactivas que permitan a los estudiantes evaluar su comprensión de los temas. Se puso especial énfasis en la usabilidad y el diseño responsivo, asegurando que EstudiaPlus sea accesible desde cualquier dispositivo.
+            </p>
+            
+            <h3>Características principales:</h3>
+            <ul>
+                <li><i class="fas fa-check"></i> Interfaz intuitiva y atractiva para una navegación sencilla.</li>
+                <li><i class="fas fa-check"></i> Cobertura de seis materias fundamentales del grado 11.</li>
+                <li><i class="fas fa-check"></i> Explicaciones teóricas claras y concisas, acompañadas de ejemplos prácticos.</li>
+                <li><i class="fas fa-check"></i> Curación de videos educativos de alta calidad para reforzar el aprendizaje.</li>
+                <li><i class="fas fa-check"></i> Pruebas interactivas con retroalimentación inmediata para una autoevaluación efectiva.</li>
+                <li><i class="fas fa-check"></i> Diseño adaptable a dispositivos móviles, tablets y computadoras.</li>
+            </ul>
+        </div>
+        <div class="proyecto-image">
+            <img src="https://regeneracion.mx/wp-content/uploads/2017/12/estudiantes.jpg" alt="Captura de EstudiaPlus">
+        </div>
+    </div>
+</section>
+    
+        <section id="materias">
+            <h2>Materias Incluidas</h2>
+            <div class="materias-grid">
+                <div class="materia-card" data-materia="matematicas">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Matemáticas</h3>
+                    <p>Álgebra, Cálculo, Geometría y más</p>
+                </div>
+                <div class="materia-card" data-materia="castellano">
+                    <i class="fas fa-book"></i>
+                    <h3>Castellano</h3>
+                    <p>Literatura, Gramática y Expresión</p>
+                </div>
+                <div class="materia-card" data-materia="biologia">
+                    <i class="fas fa-dna"></i>
+                    <h3>Biología</h3>
+                    <p>Ciencias de la vida y el medio ambiente</p>
+                </div>
+                <div class="materia-card" data-materia="fisica">
+                    <i class="fas fa-atom"></i>
+                    <h3>Física</h3>
+                    <p>Leyes del universo y la materia</p>
+                </div>
+                <div class="materia-card" data-materia="quimica">
+                    <i class="fas fa-flask"></i>
+                    <h3>Química</h3>
+                    <p>Composición y transformación de la materia</p>
+                </div>
+                <div class="materia-card" data-materia="filosofia">
+                    <i class="fas fa-brain"></i>
+                    <h3>Filosofía</h3>
+                    <p>Pensamiento crítico y reflexión</p>
+                </div>
+            </div>
+        </section>
+    
+        <section id="funcionalidades">
+            <h2>Funcionalidades Clave</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Contenido Teórico</h3>
+                    <p>Explicaciones detalladas de cada tema con fórmulas, ejemplos y conceptos clave.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>Videos Educativos</h3>
+                    <p>Selección de videos en español que complementan el aprendizaje teórico.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h3>Pruebas Interactivas</h3>
+                    <p>Evaluaciones con preguntas de opción múltiple y retroalimentación inmediata.</p>
+                </div>
+                <div class="feature
